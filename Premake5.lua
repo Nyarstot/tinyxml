@@ -1,50 +1,42 @@
-workspace "TinyXML"
-    architecture "x86_64"
+project "TinyXML"
+    kind "StaticLib"
+    language "C++"
+    toolset "v143"
 
-    configurations
+    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+    objdir ("int/" .. outputdir .. "/%{prj.name}")
+
+    files
     {
-        "Debug",
-        "Release"
+        "include/tinystr.h",
+        "include/tinystr.cpp",
+        "include/tinyxml.h",
+        "include/tinyxml.cpp",
+        "include/tinyxmlerror.cpp",
+        "include/tinyxmlparser.cpp"
     }
 
-    outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+    filter "system:windows"
+        systemversion "latest"
 
-    project "TinyXML"
-        location "TinyXML"
-        kind "StaticLib"
-        language "C++"
-        toolset "v143"
-
-        targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-        objdir ("int/" .. outputdir .. "/%{prj.name}")
-
-        files
+        defines
         {
-            "%{prj.name}/include/**.h",
-            "%{prj.name}/include/**.cpp"
+            "DTIXML_USE_STL"
         }
 
-        includedirs
-        {
-            "%{prj.name}/include"
-        }
+    filter "system:linux"
+        pic "On"
+        systemversion "latest"
 
         defines
         {
             "TIXML_USE_STL"
         }
 
-        filter "system:windows"
-            cppdialect "C++17"
-            systemversion "latest"
+    filter "configurations:Debug"
+        runtime "Debug"
+        symbols "On"
 
-        filter "system:linux"
-            cppdialect "C++17"
-            pic "On"
-            systemversion "latest"
-
-        filter "configurations:Debug"
-            symbols "On"
-
-        filter "configurations:Release"
-            optimize "On"
+    filter "configurations:Release"
+        runtime "Release"
+        optimize "On"
