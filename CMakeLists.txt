@@ -12,8 +12,8 @@ include_directories("${CMAKE_CURRENT_SOURCE_DIR}/.")
 
 add_definitions(-DTIXML_USE_STL)
 
-set( tinyxml_srcs include/tinyxml.cpp include/tinyxmlparser.cpp include/tinyxmlerror.cpp include/tinystr.cpp )
-set( tinyxml_hdrs include/tinyxml.h include/tinystr.h )
+set( tinyxml_srcs TinyXML/include/tinyxml.cpp TinyXML/include/tinyxmlparser.cpp TinyXML/include/tinyxmlerror.cpp TinyXML/include/tinystr.cpp )
+set( tinyxml_hdrs TinyXML/include/tinyxml.h TinyXML/include/tinystr.h )
 
 find_package(catkin REQUIRED COMPONENTS rospy std_msgs)
 

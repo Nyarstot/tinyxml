@@ -8,12 +8,12 @@ project "TinyXML"
 
     files
     {
-        "include/tinystr.h",
-        "include/tinystr.cpp",
-        "include/tinyxml.h",
-        "include/tinyxml.cpp",
-        "include/tinyxmlerror.cpp",
-        "include/tinyxmlparser.cpp"
+        "TinyXML/include/tinystr.h",
+        "TinyXML/include/tinystr.cpp",
+        "TinyXML/include/tinyxml.h",
+        "TinyXML/include/tinyxml.cpp",
+        "TinyXML/include/tinyxmlerror.cpp",
+        "TinyXML/include/tinyxmlparser.cpp"
     }
 
     filter "system:windows"
@@ -21,7 +21,7 @@ project "TinyXML"
 
         defines
         {
-            "DTIXML_USE_STL"
+           -- "DTIXML_USE_STL"
         }
 
     filter "system:linux"
@@ -30,7 +30,7 @@ project "TinyXML"
 
         defines
         {
-            "TIXML_USE_STL"
+           -- "TIXML_USE_STL"
         }
 
     filter "configurations:Debug"
